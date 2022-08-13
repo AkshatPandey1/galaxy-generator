@@ -137,14 +137,13 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+
 /**
  * Camera
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 3
-camera.position.y = 3
-camera.position.z = 3
+camera.position.set(6, 3, 6);
 scene.add(camera)
 
 // Controls
@@ -168,6 +167,8 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    points.rotation.y = elapsedTime * 0.04;
 
     // Update controls
     controls.update()
